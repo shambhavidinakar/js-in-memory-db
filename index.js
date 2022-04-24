@@ -16,10 +16,11 @@ console.log(
 
 const run = async () => {
   const db = new database();
-  let userInput = {command:"init"};
-  while (userInput.command != "END" || userInput.command != "end" ) {
+  let userInput = { command: "init" };
+  while (true) {
     try {
       userInput = await inquirer.awaitUserCommand();
+      if (userInput.command === "END" || userInput.command === "end") break;
       db.handleInput(userInput.command);
     } catch (err) {
       console.log(chalk.red(err));
