@@ -20,7 +20,7 @@ const run = async () => {
   while (true) {
     try {
       userInput = await inquirer.awaitUserCommand();
-      if (userInput.command === "END" || userInput.command === "end") break;
+      if (userInput.command.toUpperCase().trim() === "END") break;
       db.handleInput(userInput.command);
     } catch (err) {
       console.log(chalk.red(err));
